@@ -1,0 +1,86 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+
+const LoginScreen: React.FC = () => {
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    const handleLogin = () => {
+        // Add your login logic here
+        console.log('Email:', email);
+        console.log('Password:', password);
+    };
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.title}>AJOTCO</Text>
+            <Text style={styles.subtitle}>Sign in</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Your email"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Password"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry={true}
+            />
+            <TouchableOpacity>
+                <Text style={styles.forgotPassword}>Forgot your password?</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+                <Text style={styles.loginButtonText}>Login</Text>
+            </TouchableOpacity>
+        </View>
+    );
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        padding: 20,
+        backgroundColor: '#FFFFFF',
+    },
+    title: {
+        fontSize: 36,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        color: '#2E2E2E',
+    },
+    subtitle: {
+        fontSize: 24,
+        marginBottom: 30,
+        color: '#2E2E2E',
+    },
+    input: {
+        height: 50,
+        borderColor: '#CCCCCC',
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingLeft: 10,
+        marginBottom: 15,
+    },
+    forgotPassword: {
+        color: '#007BFF',
+        marginBottom: 20,
+        textAlign: 'right',
+    },
+    loginButton: {
+        backgroundColor: '#007BFF',
+        padding: 15,
+        borderRadius: 5,
+        alignItems: 'center',
+    },
+    loginButtonText: {
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+    },
+});
+
+export default LoginScreen;
